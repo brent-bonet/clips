@@ -5,6 +5,8 @@
   [placeholder]="placeholder"
 />
 <ng-container *ngIf="control.touched && this.control.dirty">
+  <p *ngIf="control.errors?.pattern" class="text-red-400">Invalid password.</p>
+
   <p *ngIf="control.errors?.required" class="text-red-400">Field is required.</p>
 
   <p *ngIf="control.errors?.actualLength" class="text-red-400">
