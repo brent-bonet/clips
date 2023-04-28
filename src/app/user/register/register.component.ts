@@ -57,7 +57,6 @@ export class RegisterComponent {
     try {
       await this.auth.createUser(this.registerForm.value as IUser);
     } catch (e) {
-      console.log(e);
       this.alertMsg = 'An unexpected error occurred. Please try again later.';
       this.alertColor = 'red';
       this.inSubmission = false;
