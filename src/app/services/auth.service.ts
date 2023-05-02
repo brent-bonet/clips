@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import IUser from '../models/user.model';
-import { Observable, of, switchMap } from 'rxjs';
+import { mergeMap, Observable, of, switchMap } from 'rxjs';
 import { map, delay, filter, tap } from 'rxjs/operators';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean>;
   public isAuthenticatedWithDelay$: Observable<boolean>;
+  private redirect = false;
+
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore,
@@ -25,13 +27,19 @@ export class AuthService {
     this.router.events
       .pipe(
         filter((e) => e instanceof NavigationEnd),
-        map((e) => this.route.firstChild),
-        tap(() => console.log('route', this.route)),
-        switchMap((route) => route?.data ?? of({}))
+        map(() => this.route),
+        map((route: ActivatedRoute) => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          return route;
+        }),
+        mergeMap((route: ActivatedRoute) => route.data)
       )
-      .subscribe(console.log);
+      .subscribe((data: any) => {
+        this.redirect = data.authOnly ?? false;
+      });
   }
-
   public async createUser(userData: IUser) {
     if (!userData.password) {
       throw new Error('Password not provided!');
@@ -62,6 +70,9 @@ export class AuthService {
       $event.preventDefault();
     }
     await this.auth.signOut();
-    await this.router.navigateByUrl('/');
+
+    if (this.redirect) {
+      await this.router.navigateByUrl('/');
+    }
   }
 }

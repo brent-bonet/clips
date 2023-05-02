@@ -8,7 +8,6 @@ const routes: Routes = [
     component: ManageComponent,
     data: {
       authOnly: true,
-      poop: 'yes',
     },
   },
 ];
