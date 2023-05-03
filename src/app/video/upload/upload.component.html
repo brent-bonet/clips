@@ -1,11 +1,12 @@
 <!-- Main Content -->
 <section class="container mx-auto my-8 bg-secondary p-6">
   <div class="rounded relative flex flex-col">
-    <div class="font-bold mb-6">Upload Video</div>
+    <div class="font-bold mb-6" app-event-blocker>Upload Video</div>
 
     <!-- Upload Dropbox -->
     <div
       class="w-full px-10 py-40 rounded text-center cursor-pointer border border-dashed border-gray-400 transition duration-500 hover:text-white hover:bg-indigo-400 hover:border-indigo-400 hover:border-solid text-xl"
+      app-event-blocker
     >
       <h5>Drop your file here (mp4 only!)</h5>
     </div>

@@ -15,6 +15,7 @@ import { VideoModule } from './video/video.module';
 import { UploadComponent } from './video/upload/upload.component';
 import { ClipComponent } from './clip/clip.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     VideoModule,
+    SharedModule,
   ],
   providers: [provideEnvironmentNgxMask()],
   bootstrap: [AppComponent],

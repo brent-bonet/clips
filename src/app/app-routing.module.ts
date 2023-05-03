@@ -23,10 +23,10 @@ const routes: Routes = [
     path: 'clip/:id',
     component: ClipComponent,
   },
-  {
-    path: '**',
-    component: NotFoundComponent
-  },
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent
+  // },
 ];
 
 @NgModule({
