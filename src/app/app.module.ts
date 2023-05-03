@@ -13,9 +13,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { HomeComponent } from './home/home.component';
 import { VideoModule } from './video/video.module';
 import { UploadComponent } from './video/upload/upload.component';
+import { ClipComponent } from './clip/clip.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, UploadComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, UploadComponent, ClipComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
