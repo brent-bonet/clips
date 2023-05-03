@@ -5,6 +5,7 @@
 
     <!-- Upload Dropbox -->
     <div
+      *ngIf="!nextStep; else uploadFormContainer"
       class="w-full px-10 py-40 rounded text-center cursor-pointer border border-dashed border-gray-400 transition duration-500 hover:text-white hover:bg-indigo-400 hover:border-indigo-400 hover:border-solid text-xl"
       app-event-blocker
       (dragend)="isDragover = false"
@@ -19,7 +20,7 @@
     </div>
 
     <!-- Video Editor -->
-    <div>
+    <ng-template #uploadFormContainer>
       <!-- Form -->
       <form>
         <!-- Screenshots -->
@@ -54,6 +55,6 @@
           </button>
         </div>
       </form>
-    </div>
+    </ng-template>
   </div>
 </section>
