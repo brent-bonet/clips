@@ -14,9 +14,17 @@ import { HomeComponent } from './home/home.component';
 import { VideoModule } from './video/video.module';
 import { UploadComponent } from './video/upload/upload.component';
 import { ClipComponent } from './clip/clip.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, UploadComponent, ClipComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    UploadComponent,
+    ClipComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
