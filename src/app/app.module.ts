@@ -17,6 +17,7 @@ import { ClipComponent } from './clip/clip.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     VideoModule,
     SharedModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
   ],
   providers: [provideEnvironmentNgxMask()],
   bootstrap: [AppComponent],
