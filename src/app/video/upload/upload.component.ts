@@ -38,9 +38,11 @@ export class UploadComponent {
     auth.user.subscribe((user) => (this.user = user));
   }
 
-  storeFile($event: DragEvent) {
+  storeFile($event: Event) {
     this.isDragover = false;
-    this.file = $event.dataTransfer?.files.item(0) ?? null;
+    this.file = ($event as DragEvent).dataTransfer
+      ? ($event as DragEvent).dataTransfer?.files.item(0) ?? null
+      : ($event.target as HTMLInputElement).files?.item(0) ?? null;
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
@@ -49,6 +51,7 @@ export class UploadComponent {
   }
 
   uploadFile() {
+    this.uploadForm.disable();
     this.showAlert = true;
     this.alertColor = 'blue';
     this.alertMessage = 'Please wait! Your clip is being uploaded';
@@ -85,6 +88,7 @@ export class UploadComponent {
           this.showPercentage = false;
         },
         error: (error) => {
+          this.uploadForm.enable();
           this.alertColor = 'red';
           this.alertMessage = 'Upload failed! Please try again later';
           this.inSubmission = true;
