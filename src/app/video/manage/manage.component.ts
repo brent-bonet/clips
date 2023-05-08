@@ -49,4 +49,12 @@ export class ManageComponent {
     this.activeClip = clip;
     this.modal.toggleModal('editClip');
   }
+
+  update($event: IClip) {
+    this.clips.forEach((element, index) => {
+      if (element.docId == $event.docId) {
+        this.clips[index].title = $event.title;
+      }
+    });
+  }
 }
