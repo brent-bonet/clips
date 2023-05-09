@@ -39,7 +39,7 @@ export class ClipService {
 
         const query = this.clipsCollection.ref
           .where('uid', '==', user.uid)
-          .orderBy('timestanp', sort === '1' ? 'desc' : 'asc');
+          .orderBy('timestamp', sort === '1' ? 'desc' : 'asc');
         return query.get();
       }),
       map((snapshot) => (snapshot as QuerySnapshot<IClip>).docs)
