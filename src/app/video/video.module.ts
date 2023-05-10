@@ -6,9 +6,10 @@ import { ManageComponent } from './manage/manage.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
-  declarations: [ManageComponent, EditComponent],
+  declarations: [ManageComponent, EditComponent, SafeUrlPipe],
   imports: [CommonModule, VideoRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class VideoModule {}
