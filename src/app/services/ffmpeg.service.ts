@@ -64,4 +64,10 @@ export class FfmpegService {
     this.isRunning = false;
     return screenshots;
   }
+
+  async blogFromUrl(url: string) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return blob;
+  }
 }
