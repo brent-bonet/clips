@@ -25,19 +25,28 @@ export class FfmpegService {
     const data = await fetchFile(file);
     this.ffmpeg.FS('writeFile', file.name, data);
 
+    const seconds = [1, 2, 3];
+    const commands: string[] = [];
+
+    seconds.forEach((second) =>
+      commands.push(
+        // input
+        '-i',
+        file.name,
+        // output options
+        '-ss',
+        `00:00:0${second}`,
+        '-frames:v',
+        '1',
+        '-filter:v',
+        'scale=510:-1',
+        // output
+        `output_0${second}.png`
+      )
+    );
+
     await this.ffmpeg.run(
-      // input
-      '-i',
-      file.name,
-      // output options
-      '-ss',
-      '00:00:01',
-      '-frames:v',
-      '1',
-      '-filter:v',
-      'scale=510:-1',
-      // output
-      'output_01.png'
+      ...commands
     );
   }
 }
