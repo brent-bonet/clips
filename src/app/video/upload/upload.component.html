@@ -3,11 +3,12 @@
   <div class="rounded relative flex flex-col">
     <div class="font-bold mb-6" app-event-blocker>Upload Video</div>
 
-    <ng-container *ngIf="!ffmpegService.isReady; else uploadEditorContainer">
-      <span class="material-icon text-center text-6x1 p-8 animate spin"
-        ><img src="../../../assets/settings-icon.png"
-      /></span>
-    </ng-container>
+    <span
+      *ngIf="!ffmpegService.isReady; else uploadEditorContainer"
+      class="material-icons text-center text-6xl p-8 animate-spin"
+    >
+      settings
+    </span>
 
     <ng-template #uploadEditorContainer>
       <!-- Upload Dropbox -->
@@ -24,6 +25,11 @@
           [ngClass]="{ 'bg-indigo-400 border-indigo-400 border-solid': isDragover }"
         >
           <h5>Drop your file here (mp4 only!)</h5>
+          <span
+            *ngIf="ffmpegService.isRunning"
+            class="material-icons text-center text-6x1 p-8 animate-spin"
+            >autorenew</span
+          >
         </div>
         <input type="file" class="mt-4" (change)="storeFile($event)" />
       </ng-container>
