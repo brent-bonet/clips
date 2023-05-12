@@ -1,10 +1,15 @@
 <!-- Top Bar -->
 <section class="container mx-auto my-8 bg-secondary p-6">
   <div class="rounded relative flex justify-between">
-    <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl">Upload Videos</a>
+    <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl"
+      >Upload Videos</a
+    >
 
     <!-- Sort Videos -->
-    <select (change)="sort($event)" class="text-black px-8 text-xl outline-none appearance-none">
+    <select
+      (change)="sort($event)"
+      class="text-black px-8 text-xl outline-none appearance-none"
+    >
       <option value="1" [selected]="videoOrder === '1'">Recent Uploads</option>
       <option value="2" [selected]="videoOrder === '2'">Oldest Uploads</option>
     </select>
@@ -21,14 +26,23 @@
     >
       <!-- Image -->
       <a href="#">
-        <img class="card-img-top rounded-tl-2xl w-full" src="assets/img/1.jpg" />
+        <img
+          class="card-img-top rounded-tl-2xl w-full"
+          [src]="clip.screenshotUrl"
+          crossorigin
+        />
       </a>
 
       <!-- Body -->
       <div class="p-6 text-2xl">
         <!-- Link -->
         <a href="#" class="font-bold mb-2">{{ clip.title }}</a>
-        <a href="#" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"> Copy Link </a>
+        <a
+          href="#"
+          class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"
+        >
+          Copy Link
+        </a>
       </div>
 
       <!-- Actions -->
