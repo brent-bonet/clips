@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ClipsListComponent } from './clips-list/clips-list.component';
+import { FbtimestampPipe } from './pipes/fbtimestamp.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ClipsListComponent } from './clips-list/clips-list.component';
     ClipComponent,
     NotFoundComponent,
     ClipsListComponent,
+    FbtimestampPipe,
   ],
   imports: [
     BrowserModule,
