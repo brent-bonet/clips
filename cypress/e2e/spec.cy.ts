@@ -1,6 +1,6 @@
 describe('My First Test', () => {
-  it('Visits the initial project page', () => {
-    cy.visit('/')
-    cy.contains('app is running!')
-  })
-})
+  it('Sanity test', () => {
+    cy.visit('/');
+    cy.contains('text-3xl text-indigo-400 font-bold uppercase mr-4', 'Clips');
+  });
+});
